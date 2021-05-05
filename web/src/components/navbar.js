@@ -10,7 +10,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import { MobileNavContent } from './MobileNavContent'
+import { MobileNavContent } from './mobileNavContent'
 
 export const Template = (props) => {
   const children = React.Children.toArray(props.children).filter(isValidElement)

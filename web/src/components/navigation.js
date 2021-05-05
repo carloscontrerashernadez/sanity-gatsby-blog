@@ -1,6 +1,6 @@
 import { Box, Center,useColorMode, useColorModeValue as mode } from '@chakra-ui/react'
 import * as React from 'react'
-import { Logo } from './Logo'
+import { Logo } from './logo'
 import { Navbar } from './navbar'
 import { NavLink } from './navlink'
 import { UserProfile } from './userProfile'
