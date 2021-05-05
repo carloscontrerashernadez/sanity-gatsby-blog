@@ -2,11 +2,14 @@ import { graphql } from "gatsby";
 import BlogPost from "../components/blog-post";
 import React from "react";
 import GraphQLErrorList from "../components/graphql-error-list";
-import Layout from "../containers/layout";
+import Layout from "../components/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
 import { toPlainText } from "../lib/helpers";
+import { ChakraProvider } from "@chakra-ui/react"
+ 
 
+import {theme} from '../components/theme'
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
     post: sanityPost(id: { eq: $id }) {
@@ -61,7 +64,8 @@ const BlogPostTemplate = (props) => {
   const { data, errors } = props;
   const post = data && data.post;
   return (
-    <Layout>
+    
+    <>
       {errors && <SEO title="GraphQL Error" />}
       {post && (
         <SEO
@@ -78,7 +82,9 @@ const BlogPostTemplate = (props) => {
       )}
 
       {post && <BlogPost {...post} />}
-    </Layout>
+</>
+
+    
   );
 };
 

@@ -15,7 +15,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 import IndexHero from '../components/index-hero'
 import IndexTestimonials from "../components/index-testimonials"
 
-
+import About from '../components/about-us'
 import {theme} from '../components/theme'
 
 import { Box, Button, Center, Heading, LightMode, SimpleGrid, Text } from '@chakra-ui/react'
@@ -84,30 +84,12 @@ const IndexPage = (props) => {
     );
   }
 
-  const site = (data || {}).site;
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : [];
-
-  if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    );
-  }
+ 
 
   return (
     <ChakraProvider theme={theme}>
     <Layout>
-
-      <SEO
-        title={site.title}
-        description={site.description}
-        keywords={site.keywords}
-      />
-<IndexHero/>
-<IndexTestimonials/>
+<About/>
     </Layout>
     </ChakraProvider>
   );

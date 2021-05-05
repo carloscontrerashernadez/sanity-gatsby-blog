@@ -12,14 +12,11 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 import { ChakraProvider } from "@chakra-ui/react"
-import IndexHero from '../components/index-hero'
-import IndexTestimonials from "../components/index-testimonials"
 
+import { Box, Button, Center, Heading, LightMode, SimpleGrid, Text } from '@chakra-ui/react'
 
 import {theme} from '../components/theme'
 
-import { Box, Button, Center, Heading, LightMode, SimpleGrid, Text } from '@chakra-ui/react'
-/*
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
     crop {
@@ -72,7 +69,7 @@ export const query = graphql`
     }
   }
 `;
-*/
+
 const IndexPage = (props) => {
   const { data, errors } = props;
 
@@ -106,8 +103,19 @@ const IndexPage = (props) => {
         description={site.description}
         keywords={site.keywords}
       />
-<IndexHero/>
-<IndexTestimonials/>
+
+ 
+      <Container>
+        <h1 hidden>Welcome to {site.title}</h1>
+        {postNodes && (
+          <BlogPostPreviewList
+            title="Latest blog posts"
+            nodes={postNodes}
+            browseMoreHref="/archive/"
+          />
+        )}
+      </Container>
+  
     </Layout>
     </ChakraProvider>
   );
