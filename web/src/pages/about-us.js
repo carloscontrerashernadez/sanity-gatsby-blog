@@ -19,61 +19,21 @@ import About from '../components/about-us'
 import {theme} from '../components/theme'
 
 import { Box, Button, Center, Heading, LightMode, SimpleGrid, Text } from '@chakra-ui/react'
-/*
-export const query = graphql`
-  fragment SanityImage on SanityMainImage {
-    crop {
-      _key
-      _type
-      top
-      bottom
-      left
-      right
-    }
-    hotspot {
-      _key
-      _type
-      x
-      y
-      height
-      width
-    }
-    asset {
-      _id
-    }
-  }
 
-  query IndexPageQuery {
+export const query = graphql`
+ 
+
+  query AboutPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
       keywords
     }
-    posts: allSanityPost(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          publishedAt
-          mainImage {
-            ...SanityImage
-            alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
-        }
-      }
-    }
+   
   }
 `;
-*/
-const IndexPage = (props) => {
+
+const AboutPage = (props) => {
   const { data, errors } = props;
 
   if (errors) {
@@ -84,7 +44,15 @@ const IndexPage = (props) => {
     );
   }
 
+  const site = (data || {}).site;
  
+
+  if (!site) {
+    throw new Error(
+      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
+    );
+  }
+
 
   return (
     <ChakraProvider theme={theme}>
@@ -95,4 +63,4 @@ const IndexPage = (props) => {
   );
 };
 
-export default IndexPage;
+export default AboutPage;

@@ -4,6 +4,7 @@ import Header from "./header";
 import "../styles/layout.css";
 import * as styles from "./layout.module.css";
 import Nav from '../components/navigation'
+import Footer from '../components/footer'
 
 const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
   <>
@@ -15,9 +16,7 @@ const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
     />*/}
     <Nav/>
     <div className={styles.content}>{children}</div>
-    <footer className={styles.footer}>
-   
-    </footer>
+   <Footer/>
   </>
 );
 

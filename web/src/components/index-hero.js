@@ -1,7 +1,7 @@
 import { Box, Button, Center, Heading, LightMode, SimpleGrid, Text } from '@chakra-ui/react'
 import * as React from 'react'
 
-export const IndexHero = () => {
+export const IndexHero = (props) => {
   return (
     <Box
       as="section"
@@ -33,14 +33,14 @@ export const IndexHero = () => {
       >
         <Center flexDirection="column" textAlign="center" color="white" h="full">
           <Heading size="2xl" fontWeight="extrabold" color='white'>
-            Earn Money Freelancing
+           {props.title}
           </Heading>
           <Text fontSize="lg" fontWeight="medium" mt="3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod
+           {props.subtitle}
           </Text>
           <LightMode>
             <Button   size="lg" mt="6" fontWeight="bold" fontSize="md">
-              Become a Seller
+             {props.cta}
             </Button>
           </LightMode>
         </Center>

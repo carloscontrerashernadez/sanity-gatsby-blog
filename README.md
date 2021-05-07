@@ -19,6 +19,11 @@ Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-i
    - Your frontend should be running on [http://localhost:8000](http://localhost:8000)
 4. `npm run build` to build to production locally
 
+## After updating schema
+
+1. `cd studio`
+2. `sanity graphql deploy` 
+
 ## Enable real-time content preview on development
 
 1. Go to your [project’s API settings on manage.sanity.io](https://manage.sanity.io/projects/hvlc49kr/settings/api) and create a token with read rights.
