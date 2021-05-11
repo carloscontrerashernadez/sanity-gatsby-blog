@@ -12,7 +12,7 @@ import {
 
 const Navigation = () => {
     
-    
+  const url = typeof window !== 'undefined' ? window.location.pathname : '';
     
     return (
 
@@ -25,10 +25,10 @@ const Navigation = () => {
         </Center>
       </Navbar.Brand>
       <Navbar.Links>
-      <Link to='/'> <NavLink isActive={window.location.pathname=='/'}>Start</NavLink></Link> 
-       <Link to='/blog'> <NavLink  isActive={window.location.pathname=='/blog'} >Blog</NavLink></Link>
-       <Link to='/about-us'> <NavLink isActive={window.location.pathname=='/about-us'} >About Us</NavLink></Link>
-       <Link to='/project-ares'> <NavLink isActive={window.location.pathname=='/project-ares'} >Project Ares</NavLink></Link>
+      <Link to='/'> <NavLink isActive={url=='/'}>Start</NavLink></Link> 
+       <Link to='/blog'> <NavLink  isActive={url=='/blog'} >Blog</NavLink></Link>
+       <Link to='/about-us'> <NavLink isActive={url=='/about-us'} >About Us</NavLink></Link>
+       <Link to='/project-ares'> <NavLink isActive={url=='/project-ares'} >Project Ares</NavLink></Link>
     
       </Navbar.Links>
       <Navbar.UserProfile>
