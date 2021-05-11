@@ -11,7 +11,7 @@ import {
 
 
 const Navigation = () => {
-    const { colorMode, toggleColorMode } = useColorMode()
+    
     
     
     return (
@@ -25,13 +25,19 @@ const Navigation = () => {
         </Center>
       </Navbar.Brand>
       <Navbar.Links>
-      <Link to='/'> <NavLink isActive>Start</NavLink></Link> 
-       <Link to='/blog'> <NavLink >Blog</NavLink></Link>
-       <Link to='/about-us'> <NavLink >About Us</NavLink></Link>
-       <Button onClick={toggleColorMode} >
-        Toggle {colorMode === "light" ? "Dark" : "Light"}
-      </Button>
+      <Link to='/'> <NavLink isActive={window.location.pathname=='/'}>Start</NavLink></Link> 
+       <Link to='/blog'> <NavLink  isActive={window.location.pathname=='/blog'} >Blog</NavLink></Link>
+       <Link to='/about-us'> <NavLink isActive={window.location.pathname=='/about-us'} >About Us</NavLink></Link>
+       <Link to='/project-ares'> <NavLink isActive={window.location.pathname=='/project-ares'} >Project Ares</NavLink></Link>
+    
       </Navbar.Links>
+      <Navbar.UserProfile>
+        <UserProfile
+          name="Christian Schröter"
+          avatarUrl="https://ca.slack-edge.com/T024F7F15-UJVQ359SP-81fc55875723-512"
+          email="mail@chidori-ui.com"
+        />
+      </Navbar.UserProfile>
      
     </Navbar>
   </Box>

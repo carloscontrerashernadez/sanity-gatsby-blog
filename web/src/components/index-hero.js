@@ -2,6 +2,9 @@ import { Box, Button, Center, Heading, LightMode, SimpleGrid, Text } from '@chak
 import * as React from 'react'
 
 export const IndexHero = (props) => {
+
+  const image='url('+props.image+')'
+  console.log('!',image)
   return (
     <Box
       as="section"
@@ -9,7 +12,7 @@ export const IndexHero = (props) => {
       py="12"
       position="relative"
       h={{ base: '560px', md: '640px' }}
-      bgImage="url(https://images.unsplash.com/photo-1573164713619-24c711fe7878?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1500&q=80)"
+      bgImage={image}
       bgSize="cover"
       bgPosition="center"
       _after={{

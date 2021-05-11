@@ -1,10 +1,10 @@
-import { Link, useColorModeValue as mode } from '@chakra-ui/react'
+import {Box, useColorModeValue as mode } from '@chakra-ui/react'
 import * as React from 'react'
 
 export const NavLink = (props) => {
   const { isActive, ...rest } = props
   return (
-    <Link
+    <Box
       display="block"
       py={2}
       px={3}

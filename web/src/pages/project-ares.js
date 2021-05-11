@@ -15,36 +15,19 @@ import { ChakraProvider } from "@chakra-ui/react"
 import IndexHero from '../components/index-hero'
 import IndexTestimonials from "../components/index-testimonials"
 
-
+import About from '../components/about-us'
 import {theme} from '../components/theme'
-import Feed from '../components/index-blog-feed'
-import Footer from '../components/footer'
+
 import { Box, Button, Center, Heading, LightMode, SimpleGrid, Text } from '@chakra-ui/react'
+import Hero from "../components/project-ares-hero"
+import Features from '../components/feature-group'
+import Cta from '../components/project-ares-cta'
+ 
 
 export const query = graphql`
-  fragment SanityImage on SanityMainImage {
-    crop {
-      _key
-      _type
-      top
-      bottom
-      left
-      right
-    }
-    hotspot {
-      _key
-      _type
-      x
-      y
-      height
-      width
-    }
-    asset {
-      _id
-    }
-  }
+ 
 
-  query IndexPageQuery {
+  query ProjectAresPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
@@ -52,70 +35,53 @@ export const query = graphql`
     }
 
 
-
-    posts: allSanityPost(
-      limit: 3
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
+    data: allSanityProjectAresPage {
       edges {
         node {
           id
-          publishedAt
-          mainImage {
-            ...SanityImage
-            alt 
-             asset {
-              url
-            }
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
-          categories {
-            title
-          }
-          authors {
-            author {
-              name
-            }
-          }
-        }
-      }
-    }
-
-
-
-    pages: allSanityHomePage(
-      limit: 1
-      
-     
-    ) {
-      edges {
-        node {
-          id
-          mainImage {
-            ...SanityImage
-            alt 
-             asset {
-              url
-            }
-          }
           title
           subtitle
           cta
-       
+          cta2
+          cta3
+          ctaUrl
+          ctaUrl2
+          ctaUrl3
+          ctaTitle
+          ctaSubtitle
+
+          features {
+            featureGroup {
+              title
+              features {
+                feature {
+                  name
+                    _rawBody(resolveReferences: { maxDepth: 5 })
+                  image {
+                    asset {
+                      url
+                    }
+                  }
+                 
+                }
+              }
+            }
+          }
+
+          mainImage {
+            asset {
+              url
+            }
+          }
+
         }
       }
     }
+   
   }
 `;
 
-const IndexPage = (props) => {
- 
-
+const ProjectAresPage = (props) => {
   const { data, errors } = props;
 
   if (errors) {
@@ -127,14 +93,6 @@ const IndexPage = (props) => {
   }
 
   const site = (data || {}).site;
-
-  const page =data.pages.edges[0].node;
-
-  const postNodes = (data || {}).posts
-  ? mapEdgesToNodes(data.posts)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
-  : [];
  
 
   if (!site) {
@@ -143,18 +101,22 @@ const IndexPage = (props) => {
     );
   }
  
-
   return (
     <ChakraProvider theme={theme}>
     <Layout>
-
- 
-<IndexHero title={page.title} subtitle={page.subtitle} cta={page.cta} image={page.mainImage.asset.url}/>
-<Feed nodes={postNodes}/>
-<IndexTestimonials/>
+<Hero data={data.data.edges[0].node }   />
+{
+      data.data.edges[0].node.features.map((group, index) => {
+      
+        return (
+          <Features key={index} title={group.featureGroup.title} features={group.featureGroup.features}/>
+        );
+      })
+}
+ <Cta  data={data.data.edges[0].node }  />
     </Layout>
     </ChakraProvider>
   );
 };
 
-export default IndexPage;
+export default ProjectAresPage;

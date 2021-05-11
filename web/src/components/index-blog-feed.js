@@ -48,10 +48,10 @@ import {
             }}
             py="5"
           >
- <Flex direction="row"   >
+ <Flex direction="row"  wrap='wrap' >
 {category &&
           category.map((category) => (
-         <>   <Badge
+         <>   <Badge mb='1em' colorScheme='blue'
             
           >
             {category.title}
@@ -95,7 +95,7 @@ const Feed = (props) => {
     return (
       <Box
         as="section"
-        bg={mode('gray.50', 'gray.800')}
+      
         py={{
           base: '10',
           sm: '24',

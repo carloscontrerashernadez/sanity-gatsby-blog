@@ -68,12 +68,43 @@ export default () =>
         .icon(MdLocalOffer)
         .schemaType("category")
         .child(S.documentTypeList("category").title("Categories")),
+      S.listItem()
+        .title("Home Page")
+        .icon(MdDescription)
+        .child(
+          S.editor()
+            .id("homePage")
+            .schemaType("homePage")
+            .documentId("homePage")
+        ),
+      S.listItem()
+        .title("Project Ares Page")
+        .icon(MdDescription)
+        .child(
+          S.editor()
+            .id("projectAresPage")
+            .schemaType("projectAresPage")
+            .documentId("projectAresPage")
+        ),
+      S.listItem()
+        .title("Feature Group")
+        .icon(MdLocalOffer)
+        .schemaType("featureGroup")
+        .child(S.documentTypeList("featureGroup").title("Feature Group")),
+
+      S.listItem()
+        .title("Features")
+        .icon(MdLocalOffer)
+        .schemaType("feature")
+        .child(S.documentTypeList("feature").title("Feature")),
+
+        
       // `S.documentTypeListItems()` returns an array of all the document types
       // defined in schema.js. We filter out those that we have
       // defined the structure above.
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !["category", "author", "post", "siteSettings"].includes(
+          !["category", "author", "post", "siteSettings",'homePage',"projectAresPage","feature",'featureGroup'].includes(
             listItem.getId()
           )
       ),

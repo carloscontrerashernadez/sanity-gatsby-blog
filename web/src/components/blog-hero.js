@@ -47,7 +47,7 @@ export const BlogHero = (props) => {
         position="relative"
       >
         <Center flexDirection="column" textAlign="center" color="white" h="full">
-          <Heading size="2xl" fontWeight="extrabold">
+          <Heading size="2xl" fontWeight="extrabold" color='white'>
            {props.title}
           </Heading>
           <Text fontSize="lg" fontWeight="medium" mt="3">
