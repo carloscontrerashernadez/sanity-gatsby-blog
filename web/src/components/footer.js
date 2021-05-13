@@ -2,7 +2,7 @@ import { Box, Stack, StackDivider,Text,  } from '@chakra-ui/react'
 import * as React from 'react' 
 import { LinkGrid } from './linkGrid'
 import { Logo } from './logo'
-import { SocialMediaLinks } from './socialMediaLinks'
+import  SocialMediaLinks from './socialMediaLinks'
 import { SubscribeForm } from './subscribeForm'
 
 const Footer = () => (

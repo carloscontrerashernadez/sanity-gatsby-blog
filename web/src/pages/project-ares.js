@@ -56,11 +56,14 @@ export const query = graphql`
               features {
                 feature {
                   name
+                  link
+                  newTab
                     _rawBody(resolveReferences: { maxDepth: 5 })
                   image {
                     asset {
                       url
                     }
+                    alt
                   }
                  
                 }
@@ -72,6 +75,7 @@ export const query = graphql`
             asset {
               url
             }
+            alt
           }
 
         }
@@ -83,6 +87,7 @@ export const query = graphql`
 
 const ProjectAresPage = (props) => {
   const { data, errors } = props;
+ 
 
   if (errors) {
     return (
@@ -109,7 +114,7 @@ const ProjectAresPage = (props) => {
       data.data.edges[0].node.features.map((group, index) => {
       
         return (
-          <Features key={index} title={group.featureGroup.title} features={group.featureGroup.features}/>
+          <Features key={index} data={group.featureGroup}/>
         );
       })
 }

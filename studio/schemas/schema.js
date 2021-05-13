@@ -13,7 +13,8 @@ import projectAresPage from "./documents/projectAres";
 import siteSettings from "./documents/siteSettings";
 import feature from "./documents/feature"
 import featureGroup from "./documents/feature-group"
-
+import scenario from './documents/scenario'
+import caseStudy from './documents/case-studies'
 // Object types
 import bodyPortableText from "./objects/bodyPortableText";
 import bioPortableText from "./objects/bioPortableText";
@@ -22,6 +23,8 @@ import mainImage from "./objects/mainImage";
 import authorReference from "./objects/authorReference";
 import featureReference from "./objects/featureReference";
 import featureGroupReference from "./objects/featureGroupReference";
+import postReference from './objects/postReference'
+ 
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -39,11 +42,15 @@ export default createSchema({
     feature,
     projectAresPage,
     category,
+    caseStudy,
     author,
+    scenario,
     mainImage,
+ 
     authorReference,
     featureReference,
     featureGroupReference,
+    postReference,
     bodyPortableText,
     bioPortableText,
     excerptPortableText,

@@ -20,6 +20,18 @@ export default {
         type: "bodyPortableText",
         title: "Body",
       },
+
+      {
+        name: "link",
+        type: "url",
+        title: "Links to:",
+      },
+      {
+        name: 'newTab',
+        type: 'boolean',
+        title: 'Opens in new tab?',
+       
+      }
     ],
     preview: {
       select: {

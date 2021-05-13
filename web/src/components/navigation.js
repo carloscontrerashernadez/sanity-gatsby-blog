@@ -17,7 +17,7 @@ const Navigation = () => {
     return (
 
     
-  <Box   bg={mode('gray.50', 'gray.700')}>
+  <Box   bg={mode('gray.50', 'gray.700')} pos='relative' zIndex='1' >
     <Navbar>
       <Navbar.Brand>
         <Center marginEnd="10">
@@ -29,6 +29,7 @@ const Navigation = () => {
        <Link to='/blog'> <NavLink  isActive={url=='/blog'} >Blog</NavLink></Link>
        <Link to='/about-us'> <NavLink isActive={url=='/about-us'} >About Us</NavLink></Link>
        <Link to='/project-ares'> <NavLink isActive={url=='/project-ares'} >Project Ares</NavLink></Link>
+       <Link to='/scenarios/br1'> <NavLink isActive={url=='/scenarios/br1'} >Scenario</NavLink></Link>
     
       </Navbar.Links>
       <Navbar.UserProfile>

@@ -50,8 +50,8 @@ import {
           >
  <Flex direction="row"  wrap='wrap' >
 {category &&
-          category.map((category) => (
-         <>   <Badge mb='1em' colorScheme='blue'
+          category.map((category, index) => (
+         <>   <Badge mb='1em' colorScheme='blue' key={index}
             
           >
             {category.title}
@@ -73,7 +73,7 @@ import {
               color={mode('gray.600', 'gray.400')}
             >
 
-{console.log(props)}
+ 
 
               <Text>
                 By{' '}
@@ -123,10 +123,10 @@ const Feed = (props) => {
             spacing="12"
             mb="10"
           > 
-          {console.log(props.nodes)}
+        
 {props.nodes &&
-          props.nodes.map((node) => (
-            <Blog
+          props.nodes.map((node,index) => (
+            <Blog key={index}
             category={node.categories}
             media={node.mainImage.asset.url}
             title={node.title}

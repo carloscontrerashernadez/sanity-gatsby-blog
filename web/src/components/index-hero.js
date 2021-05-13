@@ -4,7 +4,7 @@ import * as React from 'react'
 export const IndexHero = (props) => {
 
   const image='url('+props.image+')'
-  console.log('!',image)
+ 
   return (
     <Box
       as="section"

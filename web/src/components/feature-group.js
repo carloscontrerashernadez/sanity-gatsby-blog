@@ -16,7 +16,7 @@ const FeatureGroup = (props) => (
   >
 
 <Heading as="h2" size="xl" fontWeight="extrabold" mb='1em' >
-           {props.title}
+           {props.data.title}
             </Heading>
     <SimpleGrid
       columns={{
@@ -32,11 +32,10 @@ const FeatureGroup = (props) => (
 
 
 {
-      props.features.map((feature, index) => {
-       
-      
+      props.data.features.map((feature, index) => {
+    
         return (
-            <Feature key={index} title={feature.feature.name} image={feature.feature.image.asset.url} text={feature.feature._rawBody} />
+            <Feature key={index} data={feature}  />
         );
       })
 }

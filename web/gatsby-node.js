@@ -46,6 +46,93 @@ async function createBlogPostPages(graphql, actions) {
     });
 }
 
+
+
+async function createScenarioPages(graphql, actions) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityScenario  {
+        edges {
+          node {
+            id
+           title
+           slug {
+            current
+          }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const scenarioEdges = (result.data.allSanityScenario || {}).edges || [];
+
+  scenarioEdges
+    .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
+    .forEach((edge) => {
+      const {id,slug = {},  } = edge.node;
+      
+      const path = `/scenarios/${slug.current}/`;
+
+      createPage({
+        path,
+        component: require.resolve("./src/templates/scenario.js"),
+        context: { id },
+      });
+    });
+}
+
+
+
+
+
+
+
+async function createCasePages(graphql, actions) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityCase  {
+        edges {
+          node {
+            id
+           title
+           slug {
+            current
+          }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const caseEdges = (result.data.allSanityCase || {}).edges || [];
+
+  caseEdges
+    .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
+    .forEach((edge) => {
+      const {id,slug = {},  } = edge.node;
+      
+      const path = `/case-study/${slug.current}/`;
+
+      createPage({
+        path,
+        component: require.resolve("./src/templates/case-study.js"),
+        context: { id },
+      });
+    });
+}
+
+
+
+
 exports.createPages = async ({ graphql, actions }) => {
   await createBlogPostPages(graphql, actions);
+  await createScenarioPages(graphql, actions);
+  await createCasePages(graphql, actions);
 };
