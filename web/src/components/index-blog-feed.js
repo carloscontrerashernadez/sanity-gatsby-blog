@@ -92,6 +92,7 @@ import {
   }
   
 const Feed = (props) => {
+  console.log('feed',props.nodes)
     return (
       <Box
         as="section"

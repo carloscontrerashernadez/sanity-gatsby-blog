@@ -31,7 +31,32 @@ import Case from '../components/case-study'
 export const query = graphql`
   query CaseTemplateQuery($id: String!) {
 
-
+    related: allSanityCase {
+      nodes {
+        related {
+          id
+          publishedAt
+          mainImage {
+            asset {
+              url
+            }
+          }
+          _rawExcerpt
+          title
+          slug {
+            current
+          }
+          authors {
+            author {
+              name
+            }
+          }
+          categories {
+            title
+          }
+        }
+      }
+    }
  
 
     caseStudy: sanityCase(id: { eq: $id }) {
@@ -55,6 +80,51 @@ export const query = graphql`
           }
         }
 
+
+
+
+
+        quote2
+        quotee2
+        quote2Logo {
+          asset {
+            url
+          }
+        }
+        quote2Image {
+          asset {
+            url
+          }
+        }
+
+        
+        quote3
+        quotee3
+
+        benefitsImage {
+          asset {
+            url
+          }
+        }
+
+
+
+        iconsTitle
+        icon1 {
+          asset {
+            url
+          }}
+          _rawIconBlurb1
+
+          icon2 {
+            asset {
+              url
+            }}
+            _rawIconBlurb2
+
+            _rawBlurb1
+            
+            _rawBlurb2
         _rawSituation
         _rawSolution
         _rawBenefits
@@ -67,6 +137,7 @@ export const query = graphql`
 const CaseTemplate = (props) => {
     const { data, errors } = props;
     const caseStudy = data && data.caseStudy;
+    const related = data && data.related;
     return (
       
       <>
@@ -86,7 +157,7 @@ const CaseTemplate = (props) => {
           </Container>
         )}
   
-        {caseStudy && <Case {...caseStudy}  />}
+        {caseStudy && <Case {...caseStudy} related={related.nodes[0].related} />}
   </>
   
       

@@ -55,7 +55,7 @@ import {
               .sort((a,b)=>a.slug<b.slug?1:-1)
               .map((scenario, index) => (
       
-          <Box m='.5em 0'> <Link to={'/scenarios/'+scenario.node.slug.current}> <NavLink isActive={url=='/scenarios/'+scenario.node.slug.current}> {scenario.node.title}</NavLink></Link> 
+          <Box m='.5em 0' key='index'> <Link to={'/scenarios/'+scenario.node.slug.current}> <NavLink isActive={url=='/scenarios/'+scenario.node.slug.current}> {scenario.node.title}</NavLink></Link> 
           </Box>
           
        
