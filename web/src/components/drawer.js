@@ -30,8 +30,7 @@ import {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const url = typeof window !== 'undefined' ? window.location.pathname : '';
-    console.log('drawer',props.scenarios.edges)
-
+ 
     return (
       <>
         <IconButton ref={btnRef}  onClick={onOpen} m="1em"   aria-label="Search Scenarios"  icon={<ChevronDownIcon />} />

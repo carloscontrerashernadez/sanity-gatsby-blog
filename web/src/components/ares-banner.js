@@ -6,7 +6,7 @@ import Logo from '../components/logo'
 
 export const Hero = (props) => {
 
- console.log(props)
+ 
  const image='url(https://cdn.sanity.io/images/hvlc49kr/production/cc93b69600f5cd1abce97fd0d4aa71793dbbba76-1350x900.png?w=1350&h=900&auto=format)'
   return (
     <Box

@@ -117,7 +117,8 @@ function Scenario(props) {
             </Heading>
             <Flex justify="center">
             <Box  w="min(75ch,100%)">
-            <Objectives />
+    
+         { <Objectives data={props.objectives} scenario={props.slug.current}/>}
             </Box></Flex>
           </Box>
         </Flex>

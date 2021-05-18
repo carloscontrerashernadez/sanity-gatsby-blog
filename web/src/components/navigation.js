@@ -31,6 +31,7 @@ const Navigation = () => {
        <Link to='/project-ares'> <NavLink isActive={url=='/project-ares'} >Project Ares</NavLink></Link>
        <Link to='/scenarios/br1'> <NavLink isActive={url=='/scenarios/br1'} >Scenario</NavLink></Link>
        <Link to='/case-study/capella'> <NavLink isActive={url=='/case-study/capella'} >Case Study</NavLink></Link>
+       <Link to='/support'> <NavLink isActive={url=='/support'} >Support</NavLink></Link>
     
       </Navbar.Links>
       <Navbar.UserProfile>

@@ -4,7 +4,7 @@ import Social from './socialMediaLinks'
 import { format } from "date-fns";
 export const Hero = (props) => {
 
- console.log('quote',props)
+ 
  const image='url(https://cdn.sanity.io/images/hvlc49kr/production/6b890fc3902645a75a82c95e18ae6c309c77bab3-1350x900.png)'
  
 

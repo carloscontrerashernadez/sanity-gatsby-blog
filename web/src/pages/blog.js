@@ -72,7 +72,7 @@ export const query = graphql`
 
 const BlogPage = (props) => {
   const { data, errors } = props;
-  console.log('BlogPage',data)
+ 
   if (errors) {
     return (
       <Layout>

@@ -18,10 +18,12 @@ import IndexTestimonials from "../components/index-testimonials"
 import About from '../components/about-us'
 import {theme} from '../components/theme'
 
-import { Box, Button, Center, Heading, LightMode, SimpleGrid, Text } from '@chakra-ui/react'
+import {Divider} from '@chakra-ui/react'
 import Hero from "../components/project-ares-hero"
 import Features from '../components/feature-group'
 import Cta from '../components/project-ares-cta'
+import VideoHero from '../components/video-hero'
+import GenericCTA from '../components/cta'
  
 
 export const query = graphql`
@@ -35,58 +37,86 @@ export const query = graphql`
     }
 
 
-    data: allSanityProjectAresPage {
-      edges {
-        node {
-          id
-          title
-          subtitle
-          cta
-          cta2
-          cta3
-          ctaUrl
-          ctaUrl2
-          ctaUrl3
-          ctaTitle
-          ctaSubtitle
+    data: sanityProjectAresPage {
+      title
+      subtitle
+      videoUrl
+      cta
+      ctaUrl
+      newTab
+          cta1Title
+          
+          cta1NewTab
+      cta1Subtitle
+cta1Blurb
+      cta1
+      ctaUrl1
+          cta2Title
+          cta2NewTab
+      cta2Subtitle
+      cta2Blurb
+      cta2
+      ctaUrl2
+      
+          cta3Title
+          
+          cta3NewTab
+      cta3Subtitle
+      cta3Blurb
+      cta3
+      ctaUrl3
 
+
+      capabilities {
+        featureGroup {
+          title
           features {
-            featureGroup {
-              title
-              features {
-                feature {
-                  name
-                  link
-                  newTab
-                    _rawBody(resolveReferences: { maxDepth: 5 })
-                  image {
-                    asset {
-                      url
-                    }
-                    alt
-                  }
-                 
+            feature {
+              name
+              link
+              newTab
+              _rawBody(resolveReferences: {maxDepth: 5})
+              image {
+                asset {
+                  url
                 }
+                alt
               }
             }
           }
-
-          mainImage {
-            asset {
-              url
-            }
-            alt
-          }
-
         }
       }
-    }
-   
-  }
+
+
+      benefits {
+        featureGroup {
+          title
+          features {
+            feature {
+              name
+              link
+              newTab
+              _rawBody(resolveReferences: {maxDepth: 5})
+              image {
+                asset {
+                  url
+                }
+                alt
+              }
+            }
+          }
+        }
+      }
+  
+    }}
 `;
 
 const ProjectAresPage = (props) => {
   const { data, errors } = props;
+
+
+
+ 
  
 
   if (errors) {
@@ -109,16 +139,15 @@ const ProjectAresPage = (props) => {
   return (
     <ChakraProvider theme={theme}>
     <Layout>
-<Hero data={data.data.edges[0].node }   />
-{
-      data.data.edges[0].node.features.map((group, index) => {
+      <VideoHero  data={data.data }/>
+      <Features data={ data.data.benefits[0].featureGroup}/>
+      <GenericCTA  cta={data.data.cta1 } ctaUrl={data.data.ctaUrl1} title={data.data.cta1Title}  subtitle={data.data.cta1Subtitle} blurb={data.data.cta1Blurb} newTab={data.data.cta1NewTab}/>
+      <GenericCTA   cta={data.data.cta2 } ctaUrl={data.data.ctaUrl2} title={data.data.cta2Title}  subtitle={data.data.cta2Subtitle} blurb={data.data.cta2Blurb} newTab={data.data.cta2NewTab} />
+        
+         <Features data={ data.data.capabilities[0].featureGroup}/>
+         <GenericCTA   cta={data.data.cta3 } ctaUrl={data.data.ctaUrl3} title={data.data.cta3Title}  subtitle={data.data.cta3Subtitle} blurb={data.data.cta3Blurb} newTab={data.data.cta3NewTab}/>
       
-        return (
-          <Features key={index} data={group.featureGroup}/>
-        );
-      })
-}
- <Cta  data={data.data.edges[0].node }  />
+      
     </Layout>
     </ChakraProvider>
   );

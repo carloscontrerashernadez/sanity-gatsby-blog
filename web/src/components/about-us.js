@@ -1,9 +1,11 @@
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import * as React from 'react'
 import { Member } from './member'
-import { members } from './about-data'
+ 
 
-const About = () => (
+const About = (props) => {
+  console.log('about',props)
+  return(
   <Box as="section">
     <Box
       mx="auto"
@@ -22,11 +24,10 @@ const About = () => (
     >
       <Box textAlign="center">
         <Heading size="3xl" letterSpacing="tight" mb="5" fontWeight="extrabold">
-          About the team
+         {props.data.title}
         </Heading>
         <Text fontSize="xl" maxW="2xl" mx="auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+         {props.data.blurb}
         </Text>
       </Box>
       <SimpleGrid
@@ -39,21 +40,21 @@ const About = () => (
         spacingX="6"
         spacingY="16"
       >
-        {members.map((member, idx) => (
+        {props.data.team.map((member, idx) => (
           <Member
             key={idx}
-            role={member.role}
-            image={member.image}
+            role={member.title}
+            image={member.image.asset.url}
             name={member.name}
-            twitter="#"
-            linkedIn="#"
+            twitter={member.link1}
+            linkedIn={member.link2}
           >
-            {member.description}
+            {member.blurb}
           </Member>
         ))}
       </SimpleGrid>
     </Box>
   </Box>
-)
+)}
 
 export default About

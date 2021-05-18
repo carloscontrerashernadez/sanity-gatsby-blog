@@ -67,6 +67,18 @@ export const query = graphql`
         _rawPrior
         _rawInstructions
     }
+
+    allSanityObjective {
+      nodes {
+        sanityId
+        description
+        name
+        _rawBody
+      }
+    }
+
+
+
   }
 `;
 
@@ -93,7 +105,7 @@ const ScenarioTemplate = (props) => {
           </Container>
         )}
   
-        {scenario && <Scenario {...scenario} scenarios={data.scenarios}/>}
+        {scenario && <Scenario {...scenario} scenarios={data.scenarios} objectives={data.allSanityObjective.nodes}/>}
   </>
   
       

@@ -9,12 +9,15 @@ import author from "./documents/author";
 import category from "./documents/category";
 import post from "./documents/post";
 import homePage from "./documents/homePage";
+import aboutPage from "./documents/about-us"
 import projectAresPage from "./documents/projectAres";
 import siteSettings from "./documents/siteSettings";
 import feature from "./documents/feature"
 import featureGroup from "./documents/feature-group"
 import scenario from './documents/scenario'
 import caseStudy from './documents/case-studies'
+import objective from './documents/objective'
+import person from './documents/person'
 // Object types
 import bodyPortableText from "./objects/bodyPortableText";
 import bioPortableText from "./objects/bioPortableText";
@@ -41,13 +44,16 @@ export default createSchema({
     featureGroup,
     feature,
     projectAresPage,
+    aboutPage,
     category,
     caseStudy,
     author,
     scenario,
+    objective,
+    person,
+
     mainImage,
- 
-    authorReference,
+     authorReference,
     featureReference,
     featureGroupReference,
     postReference,

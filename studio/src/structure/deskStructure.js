@@ -86,6 +86,16 @@ export default () =>
             .schemaType("projectAresPage")
             .documentId("projectAresPage")
         ),
+
+        S.listItem()
+        .title("About Us Page")
+        .icon(MdDescription)
+        .child(
+          S.editor()
+            .id("aboutUsPage")
+            .schemaType("aboutUsPage")
+            .documentId("aboutUsPage")
+        ),
       S.listItem()
         .title("Feature Group")
         .icon(MdLocalOffer)
@@ -104,7 +114,7 @@ export default () =>
       // defined the structure above.
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !["category", "author", "post", "siteSettings",'homePage',"projectAresPage","feature",'featureGroup'].includes(
+          !["category", "author", "post", "siteSettings",'homePage',"projectAresPage","aboutUsPage","feature",'featureGroup'].includes(
             listItem.getId()
           )
       ),

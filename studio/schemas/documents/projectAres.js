@@ -4,7 +4,40 @@ export default {
     name: "projectAresPage",
     type: "document",
     title: "Project Ares Page",
-     
+    fieldsets: [
+      {
+        name: "hero",
+        title: "Hero",
+        options: {
+          collapsible: true, 
+          collapsed: true, 
+        },
+      },
+      {
+        name: "cta1",
+        title: "CTA 1",
+        options: {
+          collapsible: true,  
+          collapsed: true, 
+        },
+      },
+      {
+        name: "cta2",
+        title: "CTA 2",
+        options: {
+          collapsible: true,  
+          collapsed: true, 
+        },
+      },
+      {
+        name: "cta3",
+        title: "CTA 3",
+        options: {
+          collapsible: true, 
+          collapsed: true, 
+        },
+      },
+    ],
     
     fields: [
       {
@@ -12,119 +45,212 @@ export default {
         type: "string",
         title: "Title",
         description: "Titles should be catchy, descriptive, and not too long",
+        fieldset: "hero",
       },
       {
           name: "subtitle",
           type: "string",
           title: "Subtitle",
           description: "Titles should be catchy, descriptive, and not too long",
+          fieldset: "hero",
+        },
+
+        {
+          name: "videoUrl",
+          type: "url",
+          title: "Video URL",
+          description: "Vimeo video URL",
+          fieldset: "hero",
         },
         {
           name: "cta",
           type: "string",
-          title: "CTA 1 Text",
+          title: "Hero CTA Text",
           description: "Button Call to Action",
+          fieldset: "hero",
         },
         {
           name: "ctaUrl",
           type: "url",
-          title: "CTA 1 URL",
+          title: "Hero CTA URL",
           description: "Button URL",
+          fieldset: "hero",
         },
+        {
+          name: 'newTab',
+          type: 'boolean',
+          title: 'Opens in new tab?',
+          fieldset: "hero",
+        },
+
+
+
+     
+        {
+          name: "benefits",
+          title: "Benefits",
+          type: "array",
+          of: [
+            {
+              type: "featureGroupReference",
+            },
+          ],
+        },
+
+        {
+          name: "cta1Title",
+          type: "string",
+          title: "Big Title",
+          fieldset: "cta1", 
+        },
+        {
+          name: "cta1Subtitle",
+          type: "string",
+          title: "Subtitle",
+          fieldset: "cta1",
+          
+        },
+        
+        {
+          name: "cta1Blurb",
+          type: "string",
+          title: "Blurb",
+          fieldset: "cta1", 
+        },
+        {
+          name: "cta1",
+          type: "string",
+          title: "CTA",
+          fieldset: "cta1",
+          
+        },
+        {
+          name: "ctaUrl1",
+          type: "url",
+          title: "Button URL",
+          fieldset: "cta1",
+          
+        },
+        {
+          name: 'cta1NewTab',
+          type: 'boolean',
+          title: 'Opens in new tab?',
+          fieldset: "cta1",
+        },
+
+
+
+        {
+          name: "cta2Title",
+          type: "string",
+          title: "Big Title",
+          fieldset: "cta2", 
+        },
+        {
+          name: "cta2Subtitle",
+          type: "string",
+          title: "Subtitle",
+          fieldset: "cta2",
+          
+        },
+
+        {
+          name: "cta2Blurb",
+          type: "string",
+          title: "Blurb",
+          fieldset: "cta2", 
+        },
+
+
         {
           name: "cta2",
           type: "string",
-          title: "CTA 2 Text",
-          description: "Button Call to Action",
+          title: "CTA",
+          fieldset: "cta2",
+          
         },
         {
           name: "ctaUrl2",
           type: "url",
-          title: "CTA 2 URL",
-          description: "Button URL",
+          title: "Button URL",
+          fieldset: "cta2",
+          
         },
+        {
+          name: 'cta2NewTab',
+          type: 'boolean',
+          title: 'Opens in new tab?',
+          fieldset: "cta2",
+        },
+
+
+
+
+        {
+          name: "capabilities",
+          title: "Capabilities",
+          type: "array",
+          of: [
+            {
+              type: "featureGroupReference",
+            },
+          ],
+        },
+
+       
         
 
-      {
-        name: "mainImage",
-        type: "mainImage",
-        title: "Main image",
-      },
-     
-      {
-        name: "features",
-        title: "Features",
-        type: "array",
-        of: [
-          {
-            type: "featureGroupReference",
-          },
-        ],
-      },
 
-
-      {
-        name: "ctaTitle",
-        type: "string",
-        title: "CTA Title",
-        description: "Titles should be catchy, descriptive, and not too long",
-      },
-      {
-          name: "ctaSubtitle",
+        {
+          name: "cta3Title",
           type: "string",
-          title: "CTA Subtitle",
-          description: "Titles should be catchy, descriptive, and not too long",
+          title: "Big Title",
+          fieldset: "cta3", 
+        },
+        {
+          name: "cta3Subtitle",
+          type: "string",
+          title: "Subtitle",
+          fieldset: "cta3",
+          
+        },
+        {
+          name: "cta3Blurb",
+          type: "string",
+          title: "Blurb",
+          fieldset: "cta3", 
         },
         {
           name: "cta3",
           type: "string",
-          title: "CTA 3 Text",
-          description: "Button Call to Action",
+          title: "CTA",
+          fieldset: "cta3",
+          
         },
         {
           name: "ctaUrl3",
           type: "url",
-          title: "CTA 3 URL",
-          description: "Button URL",
+          title: "Button URL",
+          fieldset: "cta3",
+          
+        },
+        {
+          name: 'cta3NewTab',
+          type: 'boolean',
+          title: 'Opens in new tab?',
+          fieldset: "cta3",
         },
 
 
+ 
+
       
     ],
-    orderings: [
-      {
-        name: "publishingDateAsc",
-        title: "Publishing date new–>old",
-        by: [
-          {
-            field: "publishedAt",
-            direction: "asc",
-          },
-          {
-            field: "title",
-            direction: "asc",
-          },
-        ],
-      },
-      {
-        name: "publishingDateDesc",
-        title: "Publishing date old->new",
-        by: [
-          {
-            field: "publishedAt",
-            direction: "desc",
-          },
-          {
-            field: "title",
-            direction: "asc",
-          },
-        ],
-      },
-    ],
+ 
     preview: {
       select: {
         title: "title",
-        publishedAt: "publishedAt",
+        
    
       },
    
