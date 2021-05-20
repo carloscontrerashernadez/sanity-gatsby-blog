@@ -43,7 +43,8 @@ function Blurb(props) {
    <Img
               w="full"
               h="full"
-              objectFit="cover"
+              maxH='50vh'
+              objectFit="contain"
               alt="Testimonial"
               loading="lazy"
               rounded="4px"

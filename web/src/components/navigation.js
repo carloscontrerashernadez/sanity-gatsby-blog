@@ -30,6 +30,7 @@ const Navigation = () => {
        <Link to='/about-us'> <NavLink isActive={url=='/about-us'} >About Us</NavLink></Link>
        <Link to='/project-ares'> <NavLink isActive={url=='/project-ares'} >Project Ares</NavLink></Link>
        <Link to='/scenarios/br1'> <NavLink isActive={url=='/scenarios/br1'} >Scenario</NavLink></Link>
+       <Link to='/landing-page/test-landing-page'> <NavLink isActive={url=='/landing-page/test-landing-page'} >Landing Page</NavLink></Link>
        <Link to='/case-study/capella'> <NavLink isActive={url=='/case-study/capella'} >Case Study</NavLink></Link>
        <Link to='/support'> <NavLink isActive={url=='/support'} >Support</NavLink></Link>
     

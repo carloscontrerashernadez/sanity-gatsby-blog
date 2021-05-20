@@ -40,7 +40,7 @@ export const Hero = (props) => {
         <Img
               
               h="5em"
-              mb='1em'
+              mb='2em'
               objectFit="contain"
               alt="Testimonial"
               loading="lazy"

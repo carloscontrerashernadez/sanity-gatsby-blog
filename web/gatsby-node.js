@@ -130,9 +130,49 @@ async function createCasePages(graphql, actions) {
 
 
 
+async function createLandingPages(graphql, actions) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityLanding  {
+        edges {
+          node {
+            id
+           title
+           slug {
+            current
+          }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const landingEdges = (result.data.allSanityLanding || {}).edges || [];
+
+  landingEdges
+    .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
+    .forEach((edge) => {
+      const {id,slug = {},  } = edge.node;
+      
+      const path = `/landing-page/${slug.current}/`;
+
+      createPage({
+        path,
+        component: require.resolve("./src/templates/landing-page.js"),
+        context: { id },
+      });
+    });
+}
+
+
+
 
 exports.createPages = async ({ graphql, actions }) => {
   await createBlogPostPages(graphql, actions);
   await createScenarioPages(graphql, actions);
   await createCasePages(graphql, actions);
+  await createLandingPages(graphql, actions);
 };

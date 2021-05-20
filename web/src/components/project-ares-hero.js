@@ -1,8 +1,11 @@
-import { Box, Button, Flex, Heading, HStack, Img, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid,Heading, HStack, Img, Stack, Text } from '@chakra-ui/react'
 import * as React from 'react'
 import { HiChevronRight } from 'react-icons/hi'
+import { Link } from 'gatsby'
+import Form from './act-on-form'
 
 const ProjectAresHero = (props) => {
+ 
   return (
     <Box bg="gray.800" as="section" minH="140px" position="relative">
       <Box py="32" position="relative" zIndex={1}>
@@ -18,7 +21,16 @@ const ProjectAresHero = (props) => {
           }}
           color="white"
         >
-          <Box maxW="xl">
+          
+          <Grid
+            templateColumns={{
+              base: '1fr',
+              md: '1fr 1fr',
+            }}
+            gap="64px"
+          >
+
+          <Box >
             <Heading as="h1" size="3xl" fontWeight="extrabold" color="white">
             {props.data.title}
             </Heading>
@@ -29,7 +41,7 @@ const ProjectAresHero = (props) => {
               mt="4"
               maxW="lg"
             >
-             {props.data.subtitle}
+             {props.data.blurb}
             </Text>
             <Stack
               direction={{
@@ -39,7 +51,7 @@ const ProjectAresHero = (props) => {
               mt="10"
               spacing="4"
             >
-              <Button
+            {props.data.cta&&  <Button
                 as="a"
                 href="#"
                 colorScheme="blue"
@@ -49,30 +61,19 @@ const ProjectAresHero = (props) => {
                 fontSize="md"
                 fontWeight="bold"
               >
-               {props.data.cta}
-              </Button>
-              <HStack
-                as="a"
-                transition="background 0.2s"
-                justify={{
-                  base: 'center',
-                  md: 'flex-start',
-                }}
-                href="#"
-                color="white"
-                rounded="full"
-                fontWeight="bold"
-                px="6"
-                py="3"
-                _hover={{
-                  bg: 'whiteAlpha.300',
-                }}
-              >
-                <span>    {props.data.cta2}</span>
-                <HiChevronRight />
-              </HStack>
+               <Link>{props.data.cta}</Link>
+              </Button>}
+             
             </Stack>
           </Box>
+          <Box  bg='brand.2'>
+            <Heading as="h1" size="xl" fontWeight="extrabold" color="white">
+         <Form id={props.data.formId}/>
+            </Heading>
+          
+      
+          </Box></Grid>
+          
         </Box>
       </Box>
       <Flex
@@ -87,7 +88,7 @@ const ProjectAresHero = (props) => {
       >
         <Box position="relative" w="full" h="full">
           <Img
-            src={props.data.mainImage.asset.url}
+            src={props.data.heroImage.asset.url}
             alt="Main Image"
             w="full"
             h="full"

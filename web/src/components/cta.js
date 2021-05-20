@@ -29,7 +29,7 @@ const Cta = (props) => (
 
 
       {props.cta&& <Button mt="8" as="a" href="#" size="lg" colorScheme="blue" fontWeight="bold">
-     <Link to={props.ctaUrl} newTab={props.newTab}k>  {props.cta}</Link>
+     <Link to={props.ctaUrl} newTab={props.newTab}>  {props.cta}</Link>
       </Button>}
     </Box>
   </Box>

@@ -18,6 +18,7 @@ import scenario from './documents/scenario'
 import caseStudy from './documents/case-studies'
 import objective from './documents/objective'
 import person from './documents/person'
+import landingPage from './documents/landing-pages'
 // Object types
 import bodyPortableText from "./objects/bodyPortableText";
 import bioPortableText from "./objects/bioPortableText";
@@ -44,6 +45,7 @@ export default createSchema({
     featureGroup,
     feature,
     projectAresPage,
+    landingPage,
     aboutPage,
     category,
     caseStudy,

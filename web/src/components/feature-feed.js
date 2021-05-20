@@ -17,8 +17,9 @@ import {
   import * as React from 'react'
   import { BsArrowRight, BsClockFill } from 'react-icons/bs'
   
-  const Blog = (props) => {
-    const { title, href, description, media, author, category } = props
+  const Card = (props) => {
+      
+  
     return (
       <LinkBox
         as="article"
@@ -40,7 +41,7 @@ import {
         }}
       >
         <Flex direction="column">
-          <Img height="60" objectFit="cover" alt={title} src={media} />
+          <Img height="60" objectFit="cover" alt={props.title} src={props.media} />
           <Flex
             direction="column"
             px={{
@@ -48,43 +49,15 @@ import {
             }}
             py="5"
           >
- <Flex direction="row"  wrap='wrap' >
-{category &&
-          category.map((category, index) => (
-         <>   <Badge mb='1em' colorScheme='blue' key={index}
-            
-          >
-            {category.title}
-          </Badge> <Spacer /></>
-          ))}
-
-</Flex>
+ 
            
             <Heading as="h3" size="sm" mb="2" lineHeight="base">
-              <LinkOverlay href={href}>{title}</LinkOverlay>
+              <LinkOverlay href={props.link} isExternal={props.newTab}>{props.title}</LinkOverlay>
             </Heading>
             <Text noOfLines={2} mb="8" color={mode('gray.600', 'gray.400')}>
-              {description}
+              {props.description}
             </Text>
-            <Flex
-              align="baseline"
-              justify="space-between"
-              fontSize="sm"
-              color={mode('gray.600', 'gray.400')}
-            >
-
- 
-
-              <Text>
-                By{' '}
-                <Box as="a" textDecor="underline" >
-                  {author}
-                </Box>
-              </Text>
-              <Link href="#">
-                <Box as={BsClockFill} display="inline-block" me="2" opacity={0.4} />3 min read
-              </Link>
-            </Flex>
+           
           </Flex>
         </Flex>
       </LinkBox>
@@ -113,9 +86,7 @@ const Feed = (props) => {
             md: '8',
           }}
         >
-          <Heading size="xl" mb="8" fontWeight="extrabold">
-            Featured Articles
-          </Heading>
+          
           <SimpleGrid
             columns={{
               base: 1,
@@ -126,19 +97,22 @@ const Feed = (props) => {
           > 
         
 {props.nodes &&
-          props.nodes.map((node,index) => (
-            <Blog key={index}
-            category={node.categories}
-            media={node.mainImage.asset.url}
-            title={node.title}
+          props.nodes.map((node,index) =>{
+           
+            return(
+            <Card key={index}
+            link={node.feature.link}
+            newTab={node.feature.newTab}
+            media={node.feature.image.asset.url}
+            title={node.feature.name}
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-            href={getBlogUrl(node.publishedAt, node.slug.current)}
-            author={node.authors[0].author.name}
+            
+            
           />
-          ))}
+          )})}
             
           </SimpleGrid>
-        
+         
         </Box>
       </Box>
     )

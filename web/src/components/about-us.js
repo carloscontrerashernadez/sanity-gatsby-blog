@@ -4,7 +4,7 @@ import { Member } from './member'
  
 
 const About = (props) => {
-  console.log('about',props)
+  
   return(
   <Box as="section">
     <Box
